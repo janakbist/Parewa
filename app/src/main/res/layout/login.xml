@@ -25,10 +25,11 @@
         android:background="@drawable/round_shape"
         android:drawableStart="@drawable/ic_email"
         android:drawablePadding="16px"
-        android:drawableTint="#FF03FD0D"
+        android:drawableTint="#00A300"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:padding="18dp" />
+        android:padding="18dp"
+        android:textColorHint="@color/fullgreen" />
 
     <EditText
         android:id="@+id/password"
@@ -43,26 +44,52 @@
         android:background="@drawable/round_shape"
         android:drawableStart="@drawable/ic_lock"
         android:drawablePadding="16px"
-        android:drawableTint="#FF03FD0D"
+        android:drawableTint="#00A300"
         android:hint="Password"
         android:inputType="textPassword"
-        android:padding="18dp" />
+        android:padding="18dp"
+        android:textColorHint="@color/fullgreen" />
 
-<Button
-    android:id="@+id/loginbtn"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/password"
-    android:text="Login"
-    android:padding="16px"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="15dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginBottom="10dp"
-    android:layout_centerHorizontal="true"
-    android:textColor="@color/darkBlack"
-    android:backgroundTint="@color/green"
-    android:textAllCaps="false"/>
+<!--    android:textColorHint="@color/black"-->
+
+    <Button
+        android:id="@+id/loginbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#00A300"
+        android:padding="16px"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginbtn"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:text="Forgot Password ?"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:textAlignment="center"
+        android:layout_marginBottom="10dp"
+        android:padding="16dp"
+        android:textColor="@color/fullgreen"
+        android:textAllCaps="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forgot_password"
+        android:layout_centerHorizontal="true"
+        android:text=" New User ? Register Now"
+        android:textColor="@color/fullgreen"
+        android:textAllCaps="true"/>
 
 
 
