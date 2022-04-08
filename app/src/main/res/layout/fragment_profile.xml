@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileFragment">
+
+<ImageView
+    android:id="@+id/profilebackbtn"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_marginTop="10dp"
+    android:textAlignment="center"
+    android:background="@drawable/ic_backbtn"/>
+
+    <ImageView
+        android:id="@+id/profilepic"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/round_shape"
+        android:src="@drawable/parewalogo" />
+
+    <TextView
+        android:id="@+id/profilename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profilepic"
+        android:layout_centerInParent="true"
+        android:text="Profile Name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="15dp"/>
+    <TextClock
+        android:id="@+id/followercount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="110dp"
+        android:text="2000"
+        android:textColor="@color/black"
+        android:layout_below="@id/profilename"/>
+    <TextView
+        android:id="@+id/follower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Followers"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="100dp"
+        android:layout_below="@id/followercount"/>
+    <TextClock
+        android:id="@+id/followingcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="270dp"
+        android:text="1000"
+        android:textColor="@color/black"
+        android:layout_below="@id/profilename"/>
+    <TextView
+        android:id="@+id/following"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Following"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="260dp"
+        android:layout_below="@id/followingcount"/>
+
+    <EditText
+        android:id="@+id/editBio"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/following"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"
+        android:textAlignment="center"
+        android:hint="Add a Bio to your Profile....."/>
+
+    <TextView
+        android:id="@+id/addfriend"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/editBio"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/ic_baseline_person_24" />
+    <TextView
+        android:id="@+id/addfriendtxt"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editBio"
+        android:layout_centerInParent="true"
+        android:text="Add Friend"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="70dp"/>
+
+</RelativeLayout>

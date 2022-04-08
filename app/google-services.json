@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "75233401036",
+    "project_id": "parawa-lite",
+    "storage_bucket": "parawa-lite.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75233401036:android:1219002d25867958a68a69",
+        "android_client_info": {
+          "package_name": "com.example.parewa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75233401036-895rvt5qfekqijmc27p4nfphiken9ugq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2gYLewOUo3AdhE5enN_w6daB64b6FsYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75233401036-895rvt5qfekqijmc27p4nfphiken9ugq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
