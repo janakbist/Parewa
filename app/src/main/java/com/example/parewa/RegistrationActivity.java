@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-     //Defining variables
+    //Defining variables
     private EditText email, password, firstname,lastname;
     private RadioButton male,female,others;
     private CheckBox chktc;
@@ -133,5 +133,3 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
 }
-
-

@@ -5,12 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".SearchFragment">
 
-
-    <TextView
-        android:id="@+id/searchtxtview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search Fragments"
-        android:layout_centerInParent="true"/>
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/usersRV"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
 
 </RelativeLayout>

@@ -20,20 +20,13 @@ public class NotificationFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_notification, container, false);
         viewPager = view.findViewById(R.id.viewpager);
-        viewPager.setAdapter(new ViewPagerAdapter(getFragmentManager()));
+        viewPager.setAdapter(new ViewPagerAdapter(getChildFragmentManager()));
         tabLayout =view.findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
         return view;

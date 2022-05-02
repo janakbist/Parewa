@@ -20,17 +20,10 @@ public class Notification2Fragment extends Fragment {
     ArrayList<NotificationModel> list;
 
 
-
     public Notification2Fragment() {
         // Required empty public constructor
     }
 
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,17 +33,16 @@ public class Notification2Fragment extends Fragment {
         //change this id
         recyclerView = view.findViewById(R.id.notification2RV);
         list = new ArrayList<>();
-        list.add(new NotificationModel(R.drawable.prabhas,"just now","<b>prabhas</b> mention you in a comment"));
-        list.add(new NotificationModel(R.drawable.prabhas,"just now","<b>prabhas</b> mention you in a comment"));
-        list.add(new NotificationModel(R.drawable.prabhas,"just now","<b>prabhas</b> mention you in a comment"));
-        list.add(new NotificationModel(R.drawable.prabhas,"just now","<b>prabhas</b> mention you in a comment"));
-        list.add(new NotificationModel(R.drawable.prabhas,"just now","<b>prabhas</b> mention you in a comment"));
+        list.add(new NotificationModel(R.drawable.prabhas, "just now", "<b>prabhas</b> mention you in a comment"));
+        list.add(new NotificationModel(R.drawable.prabhas, "just now", "<b>prabhas</b> mention you in a comment"));
+        list.add(new NotificationModel(R.drawable.prabhas, "just now", "<b>prabhas</b> mention you in a comment"));
+        list.add(new NotificationModel(R.drawable.prabhas, "just now", "<b>prabhas</b> mention you in a comment"));
+        list.add(new NotificationModel(R.drawable.prabhas, "just now", "<b>prabhas</b> mention you in a comment"));
 
-        NotificationAdapter adapter = new NotificationAdapter(list,getContext());
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        NotificationAdapter adapter = new NotificationAdapter(list, getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-
         return view;
     }
 }

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/AndroidStudioProjects/Parewa2/app/src/main/res/drawable/follow_active_btn.xml" value="0.1475" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Parewa2/app/src/main/res/drawable/follow_btn_bg.xml" value="0.174" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Parewa2/app/src/main/res/drawable/ic_account.xml" value="0.1675" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Parewa2/app/src/main/res/drawable/ic_add.xml" value="0.199" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Parewa2/app/src/main/res/drawable/ic_add_photo.xml" value="0.2595" />
@@ -31,6 +33,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/Parewa2/app/src/main/res/layout/login.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Parewa2/app/src/main/res/layout/notification_rv_sample.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Parewa2/app/src/main/res/layout/story_rv_design.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Parewa2/app/src/main/res/layout/user_sample.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Parewa2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Parewa2/app/src/main/res/menu/menu_nav.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Parewa2/app/src/main/res/menu/menus.xml" value="0.25416666666666665" />
