@@ -19,6 +19,7 @@ public class DashboardActivity extends AppCompatActivity {
     SearchFragment searchFragment = new SearchFragment();
     AccountFragment accountFragment = new AccountFragment();
     NotificationFragment notificationFragment = new NotificationFragment();
+    AddPostFragment addPostFragment = new AddPostFragment();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
@@ -60,8 +61,12 @@ public class DashboardActivity extends AppCompatActivity {
                         transaction.commit();
                         break;
 
-                    case R.id.account:
+                    case R.id.profile:
                         transaction.replace(R.id.container,profileFragment);
+                        transaction.commit();
+                        break;
+                    case R.id.addPost:
+                        transaction.replace(R.id.container,addPostFragment);
                         transaction.commit();
                         break;
 

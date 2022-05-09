@@ -5,21 +5,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.parewa.Adapter.DashboardAdapter;
+import com.example.parewa.Adapter.PostAdapter;
 import com.example.parewa.Adapter.StoryAdapter;
-import com.example.parewa.data.model.DashboardModel;
+import com.example.parewa.data.model.PostModel;
 import com.example.parewa.data.model.StoryModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
     RecyclerView storyRv,dashboardRV;
     ArrayList<StoryModel>list;
-    ArrayList<DashboardModel>dashboardList;
+    ArrayList<PostModel>postList;
+    FirebaseDatabase database;
+    FirebaseAuth auth;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -36,6 +44,9 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        database = FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
+
         storyRv = view.findViewById(R.id.storyRV);
         list = new ArrayList<>();
         list.add(new StoryModel(R.drawable.ranbir,R.drawable.ranbir,"Ranbir"));
@@ -50,20 +61,31 @@ public class HomeFragment extends Fragment {
         storyRv.setAdapter(adapter);
 
         dashboardRV = view.findViewById(R.id.dashboardRV);
-        dashboardList = new ArrayList<>();
-        dashboardList.add(new DashboardModel(R.drawable.ranbir,R.drawable.ranbir,"Ranbir","300","20"));
-        dashboardList.add(new DashboardModel(R.drawable.prabhas,R.drawable.prabhas,"Prabhas","300","20"));
-        dashboardList.add(new DashboardModel(R.drawable.parewa,R.drawable.parewa,"Parewa","300","20"));
-        dashboardList.add(new DashboardModel(R.drawable.ranbir,R.drawable.ranbir,"Ranbir","300","20"));
-        dashboardList.add(new DashboardModel(R.drawable.prabhas,R.drawable.prabhas,"Prabhas","300","20"));
-        dashboardList.add(new DashboardModel(R.drawable.parewa,R.drawable.parewa,"Parewa","300","20"));
-        dashboardList.add(new DashboardModel(R.drawable.parewalogo,R.drawable.parewalogo,"Company","300","20"));
-        DashboardAdapter dashboardAdapter = new DashboardAdapter(dashboardList,getContext());
+        postList = new ArrayList<>();
+
+        PostAdapter postAdapter = new PostAdapter(postList,getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         dashboardRV.setLayoutManager(layoutManager);
         dashboardRV.setNestedScrollingEnabled(false);
-        dashboardRV.setAdapter(dashboardAdapter);
+        dashboardRV.setAdapter(postAdapter);
 
+        database.getReference().child("posts").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                postList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    PostModel post = dataSnapshot.getValue(PostModel.class);
+                    post.setPostId(dataSnapshot.getKey());
+                    postList.add(post);
+                }
+                postAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         return view;
     }

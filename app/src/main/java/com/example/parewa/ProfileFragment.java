@@ -1,5 +1,6 @@
 package com.example.parewa;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,7 +13,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.parewa.Adapter.FollowsAdapter;
+import com.example.parewa.data.model.Follow;
 import com.example.parewa.data.model.User;
 import com.example.parewa.databinding.FragmentProfileBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,6 +31,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 
 public class ProfileFragment extends Fragment {
     public ImageView bgCover;
@@ -33,6 +40,9 @@ public class ProfileFragment extends Fragment {
     FirebaseStorage storage;
     FirebaseDatabase database;
     FragmentProfileBinding binding;
+
+    RecyclerView recyclerView;
+    ArrayList<Follow> list;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -57,30 +67,75 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater,container,false);
 //        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+//        recyclerView = view.findViewById(R.id.friendRV);
+        list = new ArrayList<>();
+
+
+        FollowsAdapter adapter = new FollowsAdapter(list,getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        binding.friendRV.setLayoutManager(linearLayoutManager);
+        binding.friendRV.setNestedScrollingEnabled(false);
+        binding.friendRV.setAdapter(adapter);
+
         database.getReference().child("Users").child(auth.getUid())
+                .child("followers")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        //list.clear();
-                        if (snapshot.exists()) {
-                            /////remaing part.4:54
-                            User user = snapshot.getValue(User.class);
-                            Picasso.get().load(user.getCoverPhoto())
-                                    .placeholder(R.drawable.ic_add_photo).into(binding.profilebgimg);
-                            binding.profileName.setText(user.getFirstname());
-                            binding.lastName.setText(user.getLastname());
-                            binding.followerCount.setText(user.getFollowerCount()+"");
-                            Picasso.get().load(user.getProfile())
-                                    .placeholder(R.drawable.ic_add_photo).into(binding.profileImage);
+                        list.clear();
+                        for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                            Follow follow = dataSnapshot.getValue(Follow.class);
+                            list.add(follow);
+
                         }
-                    }
+                        adapter.notifyDataSetChanged();
+
+                        if(snapshot.exists()) {
+                            User user  = snapshot.getValue(User.class);
+                            //remove if condition...
+                            if(user!=null) {
+                                Picasso.get()
+                                        .load(user.getCoverPhoto())
+                                        .placeholder(R.drawable.ic_add_photo)
+                                        .into(binding.profilebgimg);
+                            }
+                            if(user!=null) {
+                                Picasso.get()
+                                        .load(user.getProfile())
+                                        .placeholder(R.drawable.ic_add_photo)
+                                        .into(binding.profileImage);
+                                }
+                                binding.profileName.setText(user.getFirstname());
+                                binding.lastName.setText(user.getLastname());
+                                binding.followerCount.setText(user.getFollowerCount() + " ");
+                            }
+
+                        }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
-//        ImageView addbgImage = (ImageView) view.findViewById(R.id.addbgphoto);
+        //intent for back from profile to dashboard
+        binding.backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),DashboardActivity.class);
+                startActivity(intent);
+                ((Activity) getActivity()).overridePendingTransition(0, 0);
+            }
+        });
+        //intent for logout
+        binding.logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth.signOut();
+                startActivity(new Intent(getActivity(),LoginActivity.class));
+            }
+        });
+        //4:31
+        
         binding.addbgphoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,7 +155,8 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        return binding.getRoot();
+       return binding.getRoot();
+//return view;
     }
 
     @Override

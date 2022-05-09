@@ -44,7 +44,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder>{
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         User user = list.get(position);
-        Picasso.get().load(user.getProfile()).placeholder(R.drawable.ic_add_photo)
+        Picasso.get().load(user.getProfile()).
+                placeholder(R.drawable.ic_add_photo)
                 .into(holder.binding.profileImage);
         holder.binding.profileName.setText(user.getFirstname());
         holder.binding.lastName.setText(user.getLastname());
@@ -67,25 +68,26 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder>{
                             Follow follow = new Follow();
                             follow.setFollowedBy(FirebaseAuth.getInstance().getUid());
                             follow.setFollowedAt(new Date().getTime());
-                            FirebaseDatabase.getInstance().getReference().child("Users")
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("Users")
                                     .child(user.getUserId())
                                     .child("followers")
                                     .child(FirebaseAuth.getInstance().getUid())
                                     .setValue(follow).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
-                                public void onSuccess(Void unused) {
+                                public void onSuccess(Void aVoid) {
                                     FirebaseDatabase.getInstance().getReference().child("Users")
                                             .child(user.getUserId())
                                             .child("followerCount")
                                             .setValue(user.getFollowerCount()+1).addOnSuccessListener(
                                             new OnSuccessListener<Void>() {
                                                 @Override
-                                                public void onSuccess(Void unused) {
+                                                public void onSuccess(Void aVoid) {
                                                     holder.binding.followbtn.setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.follow_active_btn));
                                                     holder.binding.followbtn.setText("Following");
                                                     holder.binding.followbtn.setTextColor(context.getResources().getColor(R.color.grey));
                                                     holder.binding.followbtn.setEnabled(false);
-                                                    Toast.makeText(context, "You Followed" + user.getFirstname()+user.getLastname(), Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(context, "You Followed " + user.getFirstname()+" "+user.getLastname(), Toast.LENGTH_SHORT).show();
                                                 }
                                             });
                                 }
@@ -112,7 +114,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder>{
         UserSampleBinding binding;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-            binding =UserSampleBinding.bind(itemView);
+            binding = UserSampleBinding.bind(itemView);
         }
     }
 }

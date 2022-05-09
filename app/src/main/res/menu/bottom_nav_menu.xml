@@ -8,22 +8,30 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_home"/>
     <item
-        android:id="@+id/notification"
-        android:title="Notification"
-        android:iconTint="@color/black"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_notifications"/>
-    <item
         android:id="@+id/search"
         android:title="Search"
         android:iconTint="@color/black"
         app:showAsAction="always"
         android:icon="@drawable/ic_search"/>
+
     <item
-        android:id="@+id/account"
-        android:title="Account"
+        android:id="@+id/addPost"
+        android:title="Add Post"
         android:iconTint="@color/black"
         app:showAsAction="always"
-        android:icon="@drawable/ic_addperson"/>
+        android:icon="@drawable/ic_add"/>
+    <item
+        android:id="@+id/notification"
+        android:title="Notification"
+        android:iconTint="@color/black"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_notifications"/>
+
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:iconTint="@color/black"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_profile"/>
 
 </menu>

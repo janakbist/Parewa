@@ -49,7 +49,7 @@ public class SearchFragment extends Fragment {
         database.getReference().child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //4:07:57
+                list.clear();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     User user = dataSnapshot.getValue(User.class);
                     user.setUserId(dataSnapshot.getKey());

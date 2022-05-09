@@ -22,4 +22,6 @@ public class Follow {
     public void setFollowedAt(long followedAt) {
         this.followedAt = followedAt;
     }
+
+
 }
